@@ -17,8 +17,8 @@ class MainActivity: Activity() {
   render()
  }
  override fun onResume(){super.onResume(); if(::layout.isInitialized){Scheduler.schedule(this);render()}}
- private fun button(text:String,action:()->Unit){ Button(this).apply{this.text=text;setOnClickListener{action()};layout.addView(this)} }
- private fun label(s:String,size:Float=17f){TextView(this).apply{text=s;textSize=size;setPadding(4,9,4,9);layout.addView(this)}}
+ private fun button(text:String,action:()->Unit){ Button(this).apply{this.text=text;setOnClickListener{action()};if(::layout.isInitialized)layout.addView(this)} }
+ private fun label(s:String,size:Float=17f){TextView(this).apply{text=s;textSize=size;setPadding(4,9,4,9);if(::layout.isInitialized)layout.addView(this)}}
  private fun render(){
   layout=LinearLayout(this).apply{orientation=LinearLayout.VERTICAL;setPadding(22,25,22,25)}
   setContentView(ScrollView(this).apply{addView(layout)})
