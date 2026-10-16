@@ -21,7 +21,9 @@ class MainActivity: Activity() {
  private fun label(s:String,size:Float=17f){TextView(this).apply{text=s;textSize=size;setPadding(4,9,4,9);layout.addView(this)}}
  private fun render(){
   layout=LinearLayout(this).apply{orientation=LinearLayout.VERTICAL;setPadding(22,25,22,25)}
-  setContentView(ScrollView(this).apply{addView(layout)})
+  val scrollView=ScrollView(this)
+  scrollView.addView(layout)
+  setContentView(scrollView)
   label("💊 Medicamentos de Alicia",25f)
   label("Cada 8 horas • 7 días • 21 tomas")
   val am=getSystemService(ALARM_SERVICE) as AlarmManager
